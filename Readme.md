@@ -52,6 +52,7 @@ getOperationList. Функция принимает ID пользователя 
 "dateTo": "2022-06-04"
 }
 
+так же доступен swagger: http://localhost:8080/swagger-ui/index.html#
 
 Структура БД 
 ![image](https://user-images.githubusercontent.com/84962796/169588932-c5cadea0-9bdb-4f62-b908-29023602bcc9.png)
