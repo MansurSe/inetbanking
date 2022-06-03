@@ -43,6 +43,18 @@ http://localhost:8080/getBalance/{id}
 "balance": "1"
 }
 
+getOperationList. Функция принимает ID пользователя и 2 даты и возвращает список операций за выбранный диапазон времени (данные из таблицы operations)
+
+пример тела запроса:
+{
+"user_id": "1",
+"dateFrom": "2022-06-01",
+"dateTo": "2022-06-04"
+}
+
+
 Структура БД 
 ![image](https://user-images.githubusercontent.com/84962796/169588932-c5cadea0-9bdb-4f62-b908-29023602bcc9.png)
+![image](https://user-images.githubusercontent.com/84962796/171938490-5c8540fb-a108-45ed-a9d9-c47b0bc09954.png)
+
 
