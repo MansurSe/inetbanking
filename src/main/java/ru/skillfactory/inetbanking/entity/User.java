@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    //private String name;
+    //private Long id2;
     private int balance;
 
 

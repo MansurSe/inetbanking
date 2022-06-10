@@ -59,7 +59,7 @@ public class BankService {
     }
 
 
-    public int getBalance(long id) {
+    public int getBalance(Long id) {
         User user = userRepository.getById(id);
         return user.getBalance();
 
@@ -72,20 +72,21 @@ public class BankService {
     }
 
 
-    public List<Operations> getOperationsWithoutDate(Long user_id){
-        return  operationsRepository.getOperationsWithoutDate(user_id);
+    public List<Operations> getOperationsWithoutDate(Long user_id) {
+        return operationsRepository.getOperationsWithoutDate(user_id);
 
     }
 
-    public void transferMoney(User user){
-        var userT1 = userRepository.findById(user.getId());
-        if (!userT1.isPresent()) {
-            return;
-        }
-        var userT2 = userRepository.findById(user.getId());
-        if (!userT2.isPresent()) {
-            return;
-        }
+
+    public void transferMoney(Long id1, Long id2, int balance) {
+        var user1 = userRepository.findById(id1).get();
+        var user2 = userRepository.findById(id2).get();
+
+
+        user1.setBalance(user1.getBalance() - balance);
+        userRepository.save(user1);
+        user2.setBalance(user2.getBalance() + balance);
+        userRepository.save(user2);
 
     }
 

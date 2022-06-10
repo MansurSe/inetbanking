@@ -6,6 +6,7 @@ import ru.skillfactory.inetbanking.entity.Operations;
 import ru.skillfactory.inetbanking.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import ru.skillfactory.inetbanking.model.MoneyTransferRequest;
 import ru.skillfactory.inetbanking.repo.UserRepository;
 import ru.skillfactory.inetbanking.service.BankService;
 
@@ -48,21 +49,8 @@ public class UserController {
     }
 
     @PutMapping("/takeMoney")
-
     public String takeMoney(@RequestBody User user) {
-        /*int balance;
 
-        try{
-            balance  = bankService.getBalance(user.getId());
-
-        }catch (Exception e){
-            return "ID not found" + e;
-        }
-        int bal = user.getBalance();
-        if(bal<0) {
-            return bal + "Balance not enough";
-        }
-        user.setBalance(balance - bal);*/
         bankService.takeBalance(user);
         return "Success";
 
@@ -75,5 +63,11 @@ public class UserController {
         return bankService.getOperationList(user_id, dateFrom, dateTo);
     }
 
+    @PutMapping("/transferMoney")
+    public String transferMoney(@RequestBody MoneyTransferRequest mtr) {
+
+        bankService.transferMoney(mtr.getId1(), mtr.getId2(), mtr.getBalance());
+        return "Success transfer";
+    }
 }
 
